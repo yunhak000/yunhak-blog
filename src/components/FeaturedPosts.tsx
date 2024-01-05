@@ -1,8 +1,10 @@
-import { getAllPosts, getFeaturedPosts } from "@/service/posts";
+import { getFeaturedPosts } from "@/service/posts";
 import { PostsGrid } from "./PostsGrid";
 
-export const FeaturedPosts = async () => {
-  const posts = await getFeaturedPosts();
+type TProps = { folderName?: string };
+
+export const FeaturedPosts = async ({ folderName }: TProps) => {
+  const posts = await getFeaturedPosts(folderName);
 
   return (
     <section>

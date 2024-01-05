@@ -9,7 +9,19 @@ export const getAllPosts = async (): Promise<TPost[]> => {
     .then((posts) => posts.sort((a, b) => (a.date > b.date ? -1 : 1)));
 };
 
-export const getFeaturedPosts = async (): Promise<TPost[]> => {
+export const getFeaturedPosts = async (folderName: string | undefined): Promise<TPost[]> => {
   const posts = await getAllPosts();
-  return posts.filter((post) => post.featured);
+
+  return posts.filter((post) => {
+    if (folderName) {
+      return post.featured && post.category.includes(folderName);
+    } else {
+      return post.featured;
+    }
+  });
+};
+
+export const getDetailPost = async (folderName: string, fileName: string): Promise<string> => {
+  const filePath = path.join(process.cwd(), `data/posts/${folderName}`, `${fileName}.md`);
+  return readFile(filePath, "utf-8");
 };
