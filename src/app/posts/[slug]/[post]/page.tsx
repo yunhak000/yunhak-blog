@@ -5,6 +5,5 @@ type TProps = {
 };
 
 export default function PostDetail({ params: { slug, post } }: TProps) {
-  console.log(post);
   return <Contents folderName={slug} fileName={post} />;
 }

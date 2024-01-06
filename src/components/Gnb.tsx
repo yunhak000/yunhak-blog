@@ -5,6 +5,7 @@ const menu = [
   { link: "/about", name: "about" },
   { link: "/posts/nextjs", name: "Nextjs" },
   { link: "/contact", name: "contact" },
+  { link: "/career", name: "이력서" },
 ];
 
 export const Gnb = () => {
